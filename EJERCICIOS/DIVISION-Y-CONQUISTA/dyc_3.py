@@ -1,5 +1,6 @@
 # Implementar un algoritmo que, por división y conquista, permita obtener la parte entera de la 
-# raíz cuadrada de un número n, en tiempo O(log n). Por ejemplo, para n = 10 debe devolver 3, y para n = 25 debe devolver 5. 
+# raíz cuadrada de un número n, en tiempo O(log n). Por ejemplo, para n = 10 debe devolver 3, y para n = 25 debe 
+# devolver 5. 
 
 # Justificar el orden del algoritmo.
 
@@ -32,5 +33,5 @@ print(resultado)
 
 # T(n) = A.T(n/B) + O(n^C) = T(n/2) + O(n^0) = T(n/2) + O(1)
 
-# log (1) = 0 → T(n) = O(n^C . log (n)) = O(n^C . log(n)) = O(n^0 . log(n)) = O(log(n))
-#    2                            B
+# log (A) = log (1) = 0 → T(n) = O(n^C . log (n)) = O(n^C . log(n)) = O(n^0 . log(n)) = O(log(n))
+#    B         2                            B
