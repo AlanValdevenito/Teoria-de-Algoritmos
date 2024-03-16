@@ -1,2 +1,3 @@
-# Teoria-de-Algoritmos
-Algoritmos y Programación II - [1C 2024]
+# Teoria de Algoritmos
+
+Ejercicios y entregas de la materia Teoria de Algoritmos.
