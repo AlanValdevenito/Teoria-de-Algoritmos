@@ -54,7 +54,7 @@ def indice_mas_bajo(alumnos):
 #    B         2                            B
 
 resultado = indice_mas_bajo(alumnos)
-print(f"EL indice del alumno mas bajo es: {resultado}")
+print(f"El indice del alumno mas bajo es: {resultado}")
 
 def validar_mas_bajo(alumnos, indice):
     return (alumnos[indice-1] > alumnos[indice]) and (alumnos[indice+1] > alumnos[indice])

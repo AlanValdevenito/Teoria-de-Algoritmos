@@ -22,7 +22,7 @@ def _parte_entera_raiz(n, desde, hasta):
 def parte_entera_raiz(n):
     return _parte_entera_raiz(n, 0, n)
 
-resultado = parte_entera_raiz(4)
+resultado = parte_entera_raiz(10)
 print(resultado)
 
 # Justificacion: Teorema maestro
