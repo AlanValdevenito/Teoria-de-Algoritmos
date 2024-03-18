@@ -22,9 +22,6 @@ def _parte_entera_raiz(n, desde, hasta):
 def parte_entera_raiz(n):
     return _parte_entera_raiz(n, 0, n)
 
-resultado = parte_entera_raiz(10)
-print(resultado)
-
 # Justificacion: Teorema maestro
 
 # A: 1 (Si bien hay escritos dos llamados, en cada ejecucion se llama a uno u otro)
@@ -35,3 +32,6 @@ print(resultado)
 
 # log (A) = log (1) = 0 → T(n) = O(n^C . log (n)) = O(n^C . log(n)) = O(n^0 . log(n)) = O(log(n))
 #    B         2                            B
+
+resultado = parte_entera_raiz(10)
+print(f"La parte entera de la raiz de 10 es: {resultado}")
