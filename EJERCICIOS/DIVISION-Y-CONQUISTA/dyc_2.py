@@ -37,8 +37,8 @@ def indice_primer_cero(arr):
 
 # T(n) = A.T(n/B) + O(n^C) = T(n/2) + O(n^0) = T(n/2) + O(1)
 
-# log (A) = log (1) = 0 → T(n) = O(n^C . log (n)) = O(n^C . log(n)) = O(n^0 . log(n)) = O(log(n))
-#    B         2                            B
+# log (A) = log (1) = 0 = C → T(n) = O(n^C . log (n)) = O(n^C . log(n)) = O(n^0 . log(n)) = O(log(n))
+#    B         2                                B
 
 arr = [1,1,1,0,0,0,0]
 resultado = indice_primer_cero(arr)

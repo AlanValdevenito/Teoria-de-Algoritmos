@@ -19,10 +19,10 @@ def _max_subarray(arr, desde, hasta):
     izq_desde, izq_hasta, sum_izq = _max_subarray(arr, desde, medio)
     der_desde, der_hasta, sum_der = _max_subarray(arr, medio+1, hasta)
 
-    if ((sum_izq + sum_der) < sum_izq):
+    if ((sum_izq + sum_der) < sum_izq) or (sum(arr[izq_desde:der_hasta+1]) < sum_izq):
         return izq_desde, izq_hasta, sum_izq
     
-    if ((sum_izq + sum_der) < sum_der):
+    if ((sum_izq + sum_der) < sum_der) or (sum(arr[izq_desde:der_hasta+1]) < sum_der):
         return der_desde, der_hasta, sum_der
     
     return izq_desde, der_hasta, sum(arr[izq_desde:der_hasta+1])
@@ -36,12 +36,12 @@ def max_subarray(arr):
 
 # A: 2 (Hay escritos dos llamados recursivos)
 # B: 2 (Se divide al problema en dos)
-# C: 1
+# C: 1 (Debido a que necesitamos sumar todos los elementos en el subarreglo)
 
 # T(n) = A.T(n/B) + O(n^C) = 2 T(n/2) + O(n^1) = 2 T(n/2) + O(n)
 
-# log (A) = log (2) = 1 → T(n) = O(n^C . log (n)) = O(n^C . log(n)) = O(n^1 . log(n)) = O(n log(n))
-#    B         2                            B
+# log (A) = log (2) = 1 = C → T(n) = O(n^C . log (n)) = O(n^C . log(n)) = O(n^1 . log(n)) = O(n log(n))
+#    B         2                                B
 
 arr1 = [5, 3, 2, 4, -1]
 resultado1, suma1 = max_subarray(arr1)

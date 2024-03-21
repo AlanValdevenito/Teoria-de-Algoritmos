@@ -32,8 +32,8 @@ def posicion_pico(v, ini, fin):
 
 # T(n) = A.T(n/B) + O(n^C) = T(n/2) + O(n^0) = T(n/2) + O(1)
 
-# log (A) = log (1) = 0 → T(n) = O(n^C . log (n)) = O(n^C . log(n)) = O(n^0 . log(n)) = O(log(n))
-#    B         2                            B
+# log (A) = log (1) = 0 = C → T(n) = O(n^C . log (n)) = O(n^C . log(n)) = O(n^0 . log(n)) = O(log(n))
+#    B         2                                B
 
 v = [1, 2, 3, 1, 0, -2]
 resultado = posicion_pico(v, 0, len(v)-1)

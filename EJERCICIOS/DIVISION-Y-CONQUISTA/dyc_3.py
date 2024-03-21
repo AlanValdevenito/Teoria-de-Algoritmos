@@ -30,8 +30,8 @@ def parte_entera_raiz(n):
 
 # T(n) = A.T(n/B) + O(n^C) = T(n/2) + O(n^0) = T(n/2) + O(1)
 
-# log (A) = log (1) = 0 → T(n) = O(n^C . log (n)) = O(n^C . log(n)) = O(n^0 . log(n)) = O(log(n))
-#    B         2                            B
+# log (A) = log (1) = 0 = C → T(n) = O(n^C . log (n)) = O(n^C . log(n)) = O(n^0 . log(n)) = O(log(n))
+#    B         2                                B
 
 resultado = parte_entera_raiz(10)
 print(f"La parte entera de la raiz de 10 es: {resultado}")
