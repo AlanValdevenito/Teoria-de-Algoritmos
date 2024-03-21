@@ -62,3 +62,15 @@ print(f"{arr4} →  {resultado4}, {suma4}")
 arr5 = [-4, -1, 0, -6, -2] # -> [0]
 resultado5, suma5 = max_subarray(arr5)
 print(f"{arr5} →  {resultado5}, {suma5}")
+
+arr6 = [1, 2, 3, 4, 5, -100, 6, 7, 8, 9, 10, 11] # ->  [6, 7, 8, 9, 10, 11]
+resultado6, suma6 = max_subarray(arr6)
+print(f"{arr6} →  {resultado6}, {suma6}")
+
+arr7 = [1, 2, 3, 4, 5, -100, 6, 7, 8, 9, 10, 11, 12] # ->  [6, 7, 8, 9, 10, 11, 12]
+resultado7, suma7 = max_subarray(arr7)
+print(f"{arr7} →  {resultado7}, {suma7}")
+
+arr8 = [1, 2, 3, 4, 5, -100, 6, 7, 8, 9, 10, 11, 12, 13, 14] # ->  [6, 7, 8, 9, 10, 11, 12, 13, 14]
+resultado8, suma8 = max_subarray(arr8)
+print(f"{arr8} →  {resultado8}, {suma8}")
