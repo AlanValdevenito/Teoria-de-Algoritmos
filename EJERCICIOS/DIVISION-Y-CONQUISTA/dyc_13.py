@@ -19,10 +19,10 @@ def _max_subarray(arr, desde, hasta):
     izq_desde, izq_hasta, sum_izq = _max_subarray(arr, desde, medio)
     der_desde, der_hasta, sum_der = _max_subarray(arr, medio+1, hasta)
 
-    if ((sum_izq + sum_der) < sum_izq) or (sum(arr[izq_desde:der_hasta+1]) < sum_izq):
+    if ((sum_izq + sum_der) < sum_izq) or (sum(arr[izq_desde:der_hasta+1]) < sum_izq and (sum_der <= sum_izq)):
         return izq_desde, izq_hasta, sum_izq
     
-    if ((sum_izq + sum_der) < sum_der) or (sum(arr[izq_desde:der_hasta+1]) < sum_der):
+    if ((sum_izq + sum_der) < sum_der) or (sum(arr[izq_desde:der_hasta+1]) < sum_der and (sum_izq <= sum_der)):
         return der_desde, der_hasta, sum_der
     
     return izq_desde, der_hasta, sum(arr[izq_desde:der_hasta+1])
@@ -58,3 +58,7 @@ print(f"{arr3} →  {resultado3}, {suma3}")
 arr4 = [5, -4, 2, 4]
 resultado4, suma4 = max_subarray(arr4)
 print(f"{arr4} →  {resultado4}, {suma4}")
+
+arr5 = [-4, -1, 0, -6, -2] # -> [0]
+resultado5, suma5 = max_subarray(arr5)
+print(f"{arr5} →  {resultado5}, {suma5}")
