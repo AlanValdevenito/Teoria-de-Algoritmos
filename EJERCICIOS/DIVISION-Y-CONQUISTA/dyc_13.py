@@ -18,11 +18,14 @@ def _max_subarray(arr, desde, hasta):
 
     izq_desde, izq_hasta, sum_izq = _max_subarray(arr, desde, medio)
     der_desde, der_hasta, sum_der = _max_subarray(arr, medio+1, hasta)
+
+    if ((sum_izq + sum_der) < sum_izq):
+        return izq_desde, izq_hasta, sum_izq
     
-    if ((sum_izq + sum_der) > sum_izq) and ((sum_izq + sum_der) > sum_der):
-        return izq_desde, der_hasta, sum_izq + sum_der
+    if ((sum_izq + sum_der) < sum_der):
+        return der_desde, der_hasta, sum_der
     
-    return (izq_desde, izq_hasta, sum_izq + arr[medio]) if sum_izq + arr[medio] > sum_der + arr[medio] else (der_desde, der_hasta, sum_der + arr[medio])
+    return izq_desde, der_hasta, sum(arr[izq_desde:der_hasta+1])
     
 def max_subarray(arr):
     n = len(arr) # Operacion O(1)
@@ -42,16 +45,16 @@ def max_subarray(arr):
 
 arr1 = [5, 3, 2, 4, -1]
 resultado1, suma1 = max_subarray(arr1)
-print(f"{arr1} →  {resultado1}")
+print(f"{arr1} →  {resultado1}, {suma1}")
 
 arr2 = [5, 3, -5, 4, -1]
 resultado2, suma2 = max_subarray(arr2)
-print(f"{arr2} →  {resultado2}")
+print(f"{arr2} →  {resultado2}, {suma2}")
 
 arr3 = [5, -4, 2, 4, -1]
 resultado3, suma3 = max_subarray(arr3)
-print(f"{arr3} →  {resultado3}")
+print(f"{arr3} →  {resultado3}, {suma3}")
 
 arr4 = [5, -4, 2, 4]
 resultado4, suma4 = max_subarray(arr4)
-print(f"{arr4} →  {resultado4}")
+print(f"{arr4} →  {resultado4}, {suma4}")
