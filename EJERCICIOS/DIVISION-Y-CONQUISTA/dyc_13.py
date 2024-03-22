@@ -19,11 +19,18 @@ def _max_subarray(arr, desde, hasta):
     izq_desde, izq_hasta, sum_izq = _max_subarray(arr, desde, medio)
     der_desde, der_hasta, sum_der = _max_subarray(arr, medio+1, hasta)
 
+    # if ((sum(arr[izq_desde:medio+1]) > sum_izq) and (sum(arr[izq_desde:der_hasta+1]) < sum(arr[izq_desde:medio+1]))):
+    #      return  izq_desde, medio, sum(arr[izq_desde:medio+1])
+
+    if ((sum(arr[medio:der_hasta+1]) > sum_der) and (sum(arr[izq_desde:der_hasta+1]) < sum(arr[medio:der_hasta+1]))):
+         return  medio, der_hasta, sum(arr[medio:der_hasta+1])
+    
     if ((sum_izq + sum_der) < sum_izq) or (sum(arr[izq_desde:der_hasta+1]) < sum_izq and (sum_der <= sum_izq)):
         return izq_desde, izq_hasta, sum_izq
     
     if ((sum_izq + sum_der) < sum_der) or (sum(arr[izq_desde:der_hasta+1]) < sum_der and (sum_izq <= sum_der)):
         return der_desde, der_hasta, sum_der
+    
     
     return izq_desde, der_hasta, sum(arr[izq_desde:der_hasta+1])
     
@@ -63,14 +70,10 @@ arr5 = [-4, -1, 0, -6, -2] # -> [0]
 resultado5, suma5 = max_subarray(arr5)
 print(f"{arr5} →  {resultado5}, {suma5}")
 
-arr6 = [1, 2, 3, 4, 5, -100, 6, 7, 8, 9, 10, 11] # ->  [6, 7, 8, 9, 10, 11]
+arr6 = [10, 9, 8, -100, 7, 6, 3, 2, 1] # ->  [6, 7, 8, 9, 10, 11]
 resultado6, suma6 = max_subarray(arr6)
 print(f"{arr6} →  {resultado6}, {suma6}")
 
-arr7 = [1, 2, 3, 4, 5, -100, 6, 7, 8, 9, 10, 11, 12] # ->  [6, 7, 8, 9, 10, 11, 12]
+arr7 = [1, 2, 3, -100, 6, 7, 8, 9, 10] # ->  [6, 7, 8, 9, 10, 11, 12]
 resultado7, suma7 = max_subarray(arr7)
 print(f"{arr7} →  {resultado7}, {suma7}")
-
-arr8 = [1, 2, 3, 4, 5, -100, 6, 7, 8, 9, 10, 11, 12, 13, 14] # ->  [6, 7, 8, 9, 10, 11, 12, 13, 14]
-resultado8, suma8 = max_subarray(arr8)
-print(f"{arr8} →  {resultado8}, {suma8}")
