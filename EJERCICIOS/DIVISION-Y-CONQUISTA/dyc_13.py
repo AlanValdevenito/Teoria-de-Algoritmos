@@ -21,11 +21,19 @@ def _max_subarray(arr, desde, hasta):
     izq_desde, izq_hasta, sum_izq = _max_subarray(arr, desde, medio)
     der_desde, der_hasta, sum_der = _max_subarray(arr, medio+1, hasta)
 
-    if ((sum_izq + sum_der) < sum_izq) and (sum_izq > sum_der) :
+    if ((sum(arr[medio:der_hasta+1]) > sum_der) and (sum(arr[medio:der_hasta+1]) > sum_izq) and (sum(arr[izq_desde:der_hasta+1]) < sum(arr[medio:der_hasta+1]))):
+        print(f"Gana del medio a la derecha: {arr[medio:der_hasta+1]}")
+        return  medio, der_hasta, sum(arr[medio:der_hasta+1])
+    
+    if ((sum(arr[izq_desde:medio+1]) > sum_der) and (sum(arr[izq_desde:medio+1]) > sum_izq) and (sum(arr[izq_desde:der_hasta+1]) < sum(arr[izq_desde:medio+1]))):
+        print(f"Gana de la izquierda al medio: {arr[izq_desde:medio+1]}")
+        return  izq_desde, medio, sum(arr[izq_desde:medio+1])
+
+    if ((sum_izq + sum_der) < sum_izq) and (sum_der <= sum_izq):
         print(f"Gana la izquierda: {arr[izq_desde:izq_hasta+1]} > {arr[der_desde:der_hasta+1]}")
         return izq_desde, izq_hasta, sum_izq
     
-    if ((sum_izq + sum_der) < sum_der) and (sum_der > sum_izq):
+    if ((sum_izq + sum_der) < sum_der) and (sum_izq <= sum_der):
         print(f"Gana la derecha: {arr[izq_desde:izq_hasta+1]} < {arr[der_desde:der_hasta+1]}")
         return der_desde, der_hasta, sum_der
     
@@ -39,7 +47,7 @@ def _max_subarray(arr, desde, hasta):
     
     print(f"Nos quedamos con la interseccion: {arr[izq_desde:der_hasta+1]}")
     return izq_desde, der_hasta, sum(arr[izq_desde:der_hasta+1])
-    
+
 def max_subarray(arr):
     n = len(arr) # Operacion O(1)
     desde, hasta, suma = _max_subarray(arr, 0, n-1)
@@ -86,4 +94,12 @@ print(f"{arr7} →  {resultado7}, {suma7}\n")
 
 arr8 = [5, 1, 1, 1, 1, 1, 1, 1, -100, 10] # ->  [1, 2, 3, 2, 1, 2, 1]
 resultado8, suma8 = max_subarray(arr8)
-print(f"{arr8} →  {resultado8}, {suma8}")
+print(f"{arr8} →  {resultado8}, {suma8}\n")
+
+arr9 = [-3, 4, -1, 2, 1, 2, 1, 1, 1] # ->  [4, -1, 2, 1, 2, 1, 1, 1]
+resultado9, suma9 = max_subarray(arr9)
+print(f"{arr9} →  {resultado9}, {suma9}\n")
+
+arr10 = [-3, 4, -1, 2, 1, -5, 4, -1] # ->  [4, -1, 2, 1]
+resultado10, suma10 = max_subarray(arr10)
+print(f"{arr10} →  {resultado10}, {suma10}\n")
