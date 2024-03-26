@@ -9,44 +9,63 @@
 # [5, -4, 2, 4, -1] -> [5, -4, 2, 4]
 # [5, -4, 2, 4] -> [5, -4, 2, 4]
 
+def _max_subarray_med(arr, desde, medio, hasta):
+    izq_sum_max = 0
+    izq_sum = 0
+    izq_desde = medio
+
+    for i in range(medio, desde-1, -1):
+        izq_sum += arr[i]
+
+        if (izq_sum > izq_sum_max):
+            izq_sum_max = izq_sum
+            izq_desde = i
+
+    der_sum_max = 0
+    der_sum = 0
+    der_hasta = medio
+
+    for i in range(medio+1, hasta+1):
+        der_sum += arr[i]
+
+        if (der_sum > der_sum_max):
+            der_sum_max = der_sum
+            der_hasta = i
+
+    return izq_desde, der_hasta, izq_sum_max + der_sum_max
+
 def _max_subarray(arr, desde, hasta):
 
     print(arr[desde:hasta+1])
-    
+
     if (desde == hasta):
         return desde, hasta, arr[desde]
     
     medio = (desde + hasta) // 2
+    
+    izq_desde, izq_hasta, izq_sum = _max_subarray(arr, desde, medio)
+    der_desde, der_hasta, der_sum = _max_subarray(arr, medio+1, hasta)
 
-    izq_desde, izq_hasta, sum_izq = _max_subarray(arr, desde, medio)
-    der_desde, der_hasta, sum_der = _max_subarray(arr, medio+1, hasta)
+    # La solucion al problema de todo el arreglo no es necesariamente unir dos resultados
+    # de las llamadas recursivas. Tampoco es necesariamente una u otra de las llamadas.
 
-    if ((sum(arr[medio:der_hasta+1]) > sum_der) and (sum(arr[medio:der_hasta+1]) > sum_izq) and (sum(arr[izq_desde:der_hasta+1]) < sum(arr[medio:der_hasta+1]))):
-        print(f"Gana del medio a la derecha: {arr[medio:der_hasta+1]}")
-        return  medio, der_hasta, sum(arr[medio:der_hasta+1])
-    
-    if ((sum(arr[izq_desde:medio+1]) > sum_der) and (sum(arr[izq_desde:medio+1]) > sum_izq) and (sum(arr[izq_desde:der_hasta+1]) < sum(arr[izq_desde:medio+1]))):
-        print(f"Gana de la izquierda al medio: {arr[izq_desde:medio+1]}")
-        return  izq_desde, medio, sum(arr[izq_desde:medio+1])
+    # Como buscamos una complejidad de O(n log(n)) en la etapa de conquista podemos
+    # permitir una complejidad de O(n).
 
-    if ((sum_izq + sum_der) < sum_izq) and (sum_der <= sum_izq):
-        print(f"Gana la izquierda: {arr[izq_desde:izq_hasta+1]} > {arr[der_desde:der_hasta+1]}")
-        return izq_desde, izq_hasta, sum_izq
+    # Sabiendo que los mejores subarreglos que involucran a una sola mitad del arreglo ya fueron
+    # encontrados, nos queda encontrar el mejor subarreglo que involucre el medio del arreglo.
+    med_desde, med_hasta, med_sum = _max_subarray_med(arr, desde, medio, hasta)
+
+    if (izq_sum > der_sum) and (izq_sum > med_sum):
+        print(f"Gana la izquierda: {arr[izq_desde:izq_hasta+1]} con {izq_sum}")
+        return izq_desde, izq_hasta, izq_sum
     
-    if ((sum_izq + sum_der) < sum_der) and (sum_izq <= sum_der):
-        print(f"Gana la derecha: {arr[izq_desde:izq_hasta+1]} < {arr[der_desde:der_hasta+1]}")
-        return der_desde, der_hasta, sum_der
+    if (der_sum > izq_sum) and (der_sum > med_sum):
+        print(f"Gana la derecha: {arr[der_desde:der_hasta+1]} con {der_sum}")
+        return der_desde, der_hasta, der_sum
     
-    if ((sum(arr[izq_desde:der_hasta+1]) < sum_izq)):
-        print(f"Vemos el medio. Gana la izquierda: {arr[izq_desde:izq_hasta+1]} > {arr[izq_desde:der_hasta+1]}")
-        return izq_desde, izq_hasta, sum_izq
-    
-    if ((sum(arr[izq_desde:der_hasta+1]) < sum_der)):
-        print(f"Vemos el medio. Gana la derecha: {arr[der_desde:der_hasta+1]} > {arr[izq_desde:der_hasta+1]}")
-        return der_desde, der_hasta, sum_der
-    
-    print(f"Nos quedamos con la interseccion: {arr[izq_desde:der_hasta+1]}")
-    return izq_desde, der_hasta, sum(arr[izq_desde:der_hasta+1])
+    print(f"Gana el medio: {arr[med_desde:med_hasta+1]} con {med_sum}")
+    return med_desde, med_hasta, med_sum
 
 def max_subarray(arr):
     n = len(arr) # Operacion O(1)
@@ -57,7 +76,8 @@ def max_subarray(arr):
 
 # A: 2 (Hay escritos dos llamados recursivos)
 # B: 2 (Se divide al problema en dos)
-# C: 1 (Debido a que necesitamos sumar todos los elementos en el subarreglo)
+# C: 1 (Debido a que necesitamos buscar el mejor subarreglo que involucre el medio del arreglo y en el peor caso
+#       debemos iterar todo el arreglo)
 
 # T(n) = A.T(n/B) + O(n^C) = 2 T(n/2) + O(n^1) = 2 T(n/2) + O(n)
 
