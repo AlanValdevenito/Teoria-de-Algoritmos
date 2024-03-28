@@ -10,7 +10,7 @@ def _elemento_desordenado(arr, desde, hasta):
 
     medio = (desde + hasta) // 2
 
-    if (arr[medio+1] < arr[medio]):
+    if (arr[medio] > arr[medio+1]):
         return arr[medio]
 
     izq = _elemento_desordenado(arr, desde, medio)
@@ -21,3 +21,7 @@ def _elemento_desordenado(arr, desde, hasta):
 def elemento_desordenado(arr):
     n = len(arr) # Operacion O(1)
     return _elemento_desordenado(arr, 0, n-1)
+
+arr1 = [2, 3, 15, 16, 19, 33, 4, 35]
+resultado = elemento_desordenado(arr1)
+print(f"El elemento desordenado es: {resultado}")
