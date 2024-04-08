@@ -1,7 +1,7 @@
 # Implementar un algoritmo que dado un Grafo no dirigido nos devuelva un conjunto de vértices que representen 
 # un mínimo Vertex Cover del mismo.
 
-# Un minimo Vertex Cover es un conjunto minimo de vertices tal que "cubre" todas las aristas del grafo.
+# Minimum Vertex Cover: Conjunto minimo de vertices tal que "cubre" todas las aristas del grafo.
 
 from grafo import Grafo
 
@@ -15,36 +15,41 @@ def es_compatible(grafo, resultado):
             
     return True
 
-def _vertex_cover_min(grafo, conjunto_actual, conjunto_solucion, indice_actual = 0):
+def _vertex_cover_min(grafo, solucion_parcial, mejor_solucion, indice_actual = 0):
 
-    if (len(conjunto_actual) >= len(conjunto_solucion)) and conjunto_solucion != []:
-        return False
+    print(f"Conjunto parcial: {solucion_parcial}")
 
-    if es_compatible(grafo, conjunto_actual):
+    # Si el tamaño de nuestro set parcial supera el tamaño del mejor set encontrado hasta el momento, podamos.
+    if (len(solucion_parcial) >= len(mejor_solucion)) and mejor_solucion != []:
+        return
 
-        if (len(conjunto_actual) < len(conjunto_solucion)) or conjunto_solucion == []:
-            conjunto_solucion.clear()
-            conjunto_solucion.extend(conjunto_actual)
-            return False
+    # Si el set parcial es compatible con la definicion de Vertex Cover...
+    if es_compatible(grafo, solucion_parcial):
 
+        # ... y el set parcial tiene un tamaño menor que el mejor set, actualizamos nuestro mejor set.
+        if (len(solucion_parcial) < len(mejor_solucion)) or mejor_solucion == []:
+            mejor_solucion.clear()
+            mejor_solucion.extend(solucion_parcial)
+            return
+
+    # Caso base: Visitamos todos los vertices.
     if indice_actual >= len(grafo.obtener_vertices()):
-        return False
+        return
 
     vertice_actual = grafo.obtener_vertices()[indice_actual]
 
-    conjunto_actual.append(vertice_actual)
-    if _vertex_cover_min(grafo, conjunto_actual, conjunto_solucion, indice_actual + 1):
-        return True
+    solucion_parcial.append(vertice_actual)
+    _vertex_cover_min(grafo, solucion_parcial, mejor_solucion, indice_actual + 1)
 
-    conjunto_actual.remove(vertice_actual)
-    return _vertex_cover_min(grafo, conjunto_actual, conjunto_solucion, indice_actual + 1)
+    solucion_parcial.remove(vertice_actual)
+    _vertex_cover_min(grafo, solucion_parcial, mejor_solucion, indice_actual + 1)
 
 def vertex_cover_min(grafo):
-    conjunto = []
+    solucion = []
 
-    _vertex_cover_min(grafo, [], conjunto)
+    _vertex_cover_min(grafo, [], solucion)
 
-    return conjunto
+    return solucion
 
 grafo1 = Grafo(False, ["A","B","C","D","E"])
 grafo1.agregar_arista("A","B")
