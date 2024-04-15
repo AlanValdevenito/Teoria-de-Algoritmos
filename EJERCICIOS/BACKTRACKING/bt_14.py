@@ -7,6 +7,20 @@
 # Dominating Set: Conjunto minimo de vertices tal que todos los demás vértices no seleccionados 
 # estén "cubiertos" por los seleccionados. 
 
+# Ideas de podas:
+# 1) Poda por solución no óptima: Si en cualquier punto del proceso de backtracking el tamaño de 
+# nuestro set dominante actual supera el tamaño del mejor set dominante encontrado hasta el momento, podemos 
+# podar.
+# 2) Poda por cobertura completa: Si todos los vértices del grafo están dominados (ya sea porque están en el 
+# set dominante o son adyacentes a un vértice en el set), cualquier adición subsiguiente de vértices al set 
+# actual es innecesaria y puede ser podada.
+# 3) Poda por dominancia de vértices: Algunos vértices pueden ser más "valiosos" que otros en términos de 
+# cuántos otros vértices pueden dominar. Si eliges un vértice que domina a menos vértices que otro que no ha 
+# sido elegido todavía y ambos pueden ser añadidos al set dominante, es posible que la elección no sea óptima. 
+# 4) Poda por vértices ya dominados: Si un vértice ya está dominado (porque es adyacente a algún vértice en 
+# el set dominante actual), entonces agregar uno de sus vecinos al set dominante (a menos que ese vecino agregue 
+# nuevos vértices no dominados al dominio) no es necesario y puede ser podado.
+
 from grafo import Grafo
 
 def es_compatible(g, d):
