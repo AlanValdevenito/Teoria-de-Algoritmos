@@ -23,61 +23,42 @@
 
 from grafo import Grafo
 
-def es_compatible(g, d):
-
+def es_dominating_set(g, d):
     for v in g.obtener_vertices():
+        if v in d:
+            continue
 
-        if v not in d:
-            tiene_adyacente_a_un_vertice_en_d = False
-
-            for w in g.adyacentes(v):
-
-                if w in d:
-                    tiene_adyacente_a_un_vertice_en_d = True
-                    break
-
-            if not tiene_adyacente_a_un_vertice_en_d:
-                return False
-            
+        tiene_adyacente_a_un_vertice_en_d = False
+        for w in g.adyacentes(v):
+            if w in d:
+                tiene_adyacente_a_un_vertice_en_d = True
+                break
+        
+        if not tiene_adyacente_a_un_vertice_en_d:
+            return False
+    
     return True
 
-def _dominating_set_min(grafo, solucion_parcial, mejor_solucion, indice_actual = 0):
+def _dominating_set_min(grafo, vertices, conjunto_actual, conjunto_optimo, actual = 0):
     
-    print(f"Conjunto parcial: {solucion_parcial}")
+    print(f"Conjunto parcial: {conjunto_actual}")
 
-    # Si el tamaño de nuestro set parcial supera el tamaño del mejor set encontrado hasta el momento, podamos.
-    if (len(solucion_parcial) >= len(mejor_solucion)) and mejor_solucion != []:
-        return
+    if actual == len(vertices):
+        return set(conjunto_actual) if len(conjunto_actual) < len(conjunto_optimo) else set(conjunto_optimo)
 
-    # Si el set parcial es compatible con la definicion de Dominating Set...
-    if es_compatible(grafo, solucion_parcial):
+    vertice_actual = vertices[actual]
 
-        # ... y el set parcial tiene un tamaño menor que el mejor set, actualizamos nuestro mejor set.
-        if (len(solucion_parcial) < len(mejor_solucion)) or mejor_solucion == []:
-            mejor_solucion.clear()
-            mejor_solucion.extend(solucion_parcial)
-            return
+    conjunto_actual.remove(vertice_actual)
+    if es_dominating_set(grafo, conjunto_actual):
+        conjunto_optimo = _dominating_set_min(grafo, vertices, conjunto_actual, conjunto_optimo, actual + 1)
 
-    # Caso base: Visitamos todos los vertices.
-    if indice_actual >= len(grafo.obtener_vertices()):
-        return
-
-    vertice_actual = grafo.obtener_vertices()[indice_actual]
-
-    solucion_parcial.append(vertice_actual)
-    _dominating_set_min(grafo, solucion_parcial, mejor_solucion, indice_actual + 1)
-
-    solucion_parcial.remove(vertice_actual)
-    _dominating_set_min(grafo, solucion_parcial, mejor_solucion, indice_actual + 1)
+    conjunto_actual.add(vertice_actual)
+    return _dominating_set_min(grafo, vertices, conjunto_actual, conjunto_optimo, actual + 1)
 
 def dominating_set_min(grafo):
-    solucion = []
+    return _dominating_set_min(grafo, grafo.obtener_vertices(), set(grafo.obtener_vertices()), set(grafo.obtener_vertices()))
 
-    _dominating_set_min(grafo, [], solucion)
-
-    return solucion
-
-grafo1 = Grafo(False, ["1","2","3","4","5", "6"])
+grafo1 = Grafo(False, ["1","2","3","4","5","6"])
 
 grafo1.agregar_arista("1","2")
 grafo1.agregar_arista("1","3")
@@ -88,4 +69,4 @@ grafo1.agregar_arista("4","5")
 grafo1.agregar_arista("4","6")
 
 resultado1 = dominating_set_min(grafo1)
-print(f"El conjunto minimo de vertices es: {resultado1} y se esperaba ['1', '4'], ['3', '4'] o ['2', '4']\n")
+print(f"El conjunto minimo de vertices es: {resultado1} y se esperaba ['1', '4'], ['3', '4'], ['2', '4'] o ['3', '6']\n")
