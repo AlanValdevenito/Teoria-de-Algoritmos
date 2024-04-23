@@ -27,6 +27,7 @@ def calcular_p(charlas, n):
     return p
 
 def scheduling_dinamico(n, p, charlas):
+
     if n == 0:
         return 0
     
@@ -39,6 +40,7 @@ def scheduling_dinamico(n, p, charlas):
     return mem
 
 def scheduling_solucion(mem, charlas, p, i, solucion):
+
     if i == 0:
         return solucion
     
@@ -62,7 +64,7 @@ def scheduling(charlas):
 
 # Complejidad: Tenemos O(n log(n)) por ordenar las charlas, O(n log (n)) por hacer para cada elemento una busqueda 
 # binaria, O(n) por calcular la matriz de memorizacion y O(n) por recuperar la solucion. Luego, la complejidad
-# total es de O(n log(n)).
+# total es O(n log(n)).
 
 assert scheduling([(1,6,1), (3,10,3), (8,14,1)]) == [(3,10,3)]
 
