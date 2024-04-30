@@ -57,9 +57,7 @@ def scheduling(charlas):
     p = calcular_p(charlas_ordenadas, n)
 
     mem = scheduling_dinamico(n, p, charlas_ordenadas)
-
     solucion = scheduling_solucion(mem, charlas_ordenadas, p, n, [])
-
     return [charlas_ordenadas[i] for i in reversed(solucion)]
 
 # Complejidad: Tenemos O(n log(n)) por ordenar las charlas, O(n log (n)) por hacer para cada elemento una busqueda 
