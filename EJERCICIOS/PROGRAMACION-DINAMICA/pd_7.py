@@ -28,7 +28,7 @@ def mochila_dinamico(elementos, n, W):
 def mochila_solucion(mem, elementos, n, W):
     solucion = []
 
-    while n >= 0 and W >= 0:
+    while n > 0 and W >= 0:
 
         if mem[n][W] != mem[n-1][W]:
             solucion.append(elementos[n-1])
@@ -50,6 +50,7 @@ def mochila(elementos, W):
 # complejidad total es O(n x W).
 
 assert mochila([(10,6), (1,1), (8,3), (100,100), (6,4), (11,2), (7,8), (2,7), (11,9)], 20) == [(10, 6), (8, 3), (11, 2), (11, 9)]
+assert mochila([(5, 6)], 12) == [(5, 6)]
 
 # Tests RPL
 
