@@ -12,7 +12,7 @@
 # - Capacidad de la mochila ⇾ Capacidad de la mesa
 # - Peso del objeto n ⇾ Cantidad de personas que integran el grupo n
 
-# Ecuacion de recurrencia: OPT(n,W) = max{no sentar el grupo, sentar el elemento} = 
+# Ecuacion de recurrencia: OPT(n,W) = max{no sentar el grupo, sentar el grupo} = 
 #                                   = max{OPT(n-1, W), OPT(n-1, W-Pi) + Pi}
 
 def memorizacion(P, n, W):
