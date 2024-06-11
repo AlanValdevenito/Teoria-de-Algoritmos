@@ -106,3 +106,10 @@ assert lunatico([100, 20, 30]) == (100, [0])
 assert lunatico([60, 100, 60]) == (100, [1])
 assert lunatico([100, 20, 30, 70, 50, 5]) == (180, [0, 2, 4])
 assert lunatico([100, 20, 30, 70, 50]) == (170, [0, 3])
+
+# Nota: Podriamos llamar dos veces a la funcion que resuelve el problema de Juan el Vago:
+# - El primer llamado sin el primer elemento.
+# - El segundo llamado sin el ultimo elemento.
+
+# Luego, entre las dos soluciones obtenidas elegimos aquella cuyo ultimo element sea mayor y a esta le aplicamos la reconstruccion para
+# obtener la solucion.
