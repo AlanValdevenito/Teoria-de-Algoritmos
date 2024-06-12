@@ -97,7 +97,7 @@ def lunatico(ganancias):
     return (mem2[n-2], solucion)
 
 # Complejidad: Tenemos O(n) por calcular la matriz de memorizacion y O(n) por recuperar la solucion. Luego, la 
-# complejidad total es O(n).
+#              complejidad total es O(n).
 
 assert lunatico([]) == (0, [])
 assert lunatico([100]) == (100, [0])
@@ -111,5 +111,5 @@ assert lunatico([100, 20, 30, 70, 50]) == (170, [0, 3])
 # - El primer llamado sin el primer elemento.
 # - El segundo llamado sin el ultimo elemento.
 
-# Luego, entre las dos soluciones obtenidas elegimos aquella cuyo ultimo element sea mayor y a esta le aplicamos la reconstruccion para
+# Luego, entre las dos soluciones obtenidas elegimos aquella cuyo ultimo elemento sea mayor y a esta le aplicamos la reconstruccion para
 # obtener la solucion.
