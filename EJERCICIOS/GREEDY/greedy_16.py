@@ -8,7 +8,7 @@
 
 from grafo import Grafo
 
-# conocidos: lista de pares de invitados que se conocen, cada elemento es un (a,b).
+# Conocidos: Lista de pares de invitados que se conocen, cada elemento es un (a,b)
 def obtener_invitados(conocidos):
     grafo = Grafo(False)
 
