@@ -15,6 +15,9 @@
 # Ecuacion de recurrencia: OPT[i][j] = max{llegar desde la izquierda, llegar desde arriba} + V[i][j] =
 #                                    = max{OPT[i][j-1], OPT[i-1][j]} + V[i][j]
 
+# Si hay algunos lugares por los que no podemos pasar (obstaculos) debemos forzar un 0 para que de esta forma sean ignorados en la 
+# ecuacion de recurrencia.
+
 def laberinto_dinamico(matriz,n, m):
     mem = [[0 for i in range(m)] for j in range(n)]
 
