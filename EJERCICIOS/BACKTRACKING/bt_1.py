@@ -1,8 +1,6 @@
 # Implementar por backtracking un algoritmo que, dado un grafo no dirigido y un numero n menor a la cantidad de vertices, devuelva si es 
 # posible obtener un subconjunto de n vertices tal que ningun par de vertices sea adyacente entre si.
 
-# Independet Set: Conjunto de vertices tal que no hay dos vértices en el conjunto que sean adyacentes entre sí.
-
 from grafo import Grafo
 
 def es_compatible(grafo, puestos):

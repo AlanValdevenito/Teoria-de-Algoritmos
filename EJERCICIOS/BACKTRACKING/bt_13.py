@@ -1,7 +1,7 @@
 # Implementar un algoritmo que dado un Grafo no dirigido nos devuelva un conjunto de vértices que representen 
 # un mínimo Vertex Cover del mismo.
 
-# Minimum Vertex Cover: Conjunto minimo de vertices tal que "cubre" todas las aristas del grafo.
+# Minimum Vertex Cover: Conjunto minimo de vertices tal que cubre todas las aristas del grafo.
 
 from grafo import Grafo
 
