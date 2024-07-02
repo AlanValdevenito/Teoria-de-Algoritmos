@@ -50,28 +50,6 @@ def cobertura(casas, R, K):
 #                      cubra el punto más lejano  posible hacia adelante, se minimiza el número total de antenas necesarias para 
 #                      cubrir todas las casas.
 
-
-
-'''
-Greedy: el algoritmo es greedy porque su regla sencilla es que en cada paso 
-coloca una antena que cubre la casa actual y luego se mueve al punto más lejano 
-dentro de la cobertura actual que necesita una antena, intentando cubrir tantas 
-casas como sea posible con cada antena nueva. Con esto, en cada decisión que 
-toma, está consiguiendo un óptimo local, que sería cubrir la mayor cantidad de 
-Km posible con cada antena.
-
-Complejidad del algoritmo: la complejidad temporal es O(nlogn) debido al 
-ordenamiento inicial de las casas, donde n es el número de casas. Después del 
-ordenamiento, el algoritmo recorre las casas una vez, proceso que tiene una 
-complejidad O(n). Entonces, en suma de complejidades predomina la mayor, 
-O(nlogn).
-
-Optimalidad: este algoritmo greedy proporciona una solución óptima para este 
-problema, ya que al colocar cada antena de forma que cubra el punto más lejano 
-posible hacia adelante, se minimiza el número total de antenas necesarias para 
-cubrir todas las casas.
-'''
-
 assert cobertura([150, 50, 100], 50, 1000) == [100]
 assert cobertura([50, 150, 105], 50, 1000) == [100]
 assert cobertura([51, 107, 844, 802, 151, 902], 50, 1000) == [101, 852]
