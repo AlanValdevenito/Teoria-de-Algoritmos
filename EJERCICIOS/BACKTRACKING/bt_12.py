@@ -31,5 +31,5 @@ def max_sumatoria_n(lista, n):
 
     return subconjunto_optimo
 
-print(max_sumatoria_n([1,2,3,4,5,6,8,9], 12))
-print(max_sumatoria_n([1,2,3], 12))
+assert max_sumatoria_n([1,2,3,4,5,6,8,9], 12) == [4,8]
+assert max_sumatoria_n([1,2,3], 12) == [1,2,3]
