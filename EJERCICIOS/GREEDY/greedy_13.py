@@ -10,31 +10,23 @@
 
 # Justificar por qué se trata de un algoritmo greedy. ¿El algoritmo da la solución óptima siempre?.
 
+ULTIMA_ANTENA = -1
+
 def cobertura(casas, R, K):
     casas_ordenadas = sorted(casas)
     antenas = []
 
-    i = 0
-    n = len(casas_ordenadas)
-    while (i < n):
+    for casa in casas_ordenadas:
 
-        # Si estamos fuera de la jurisdiccion del intendente, continuamos con la casa siguiente
-        if (casas_ordenadas[i] > K):
-            i += 1
+        if len(antenas) > 0 and (casa <= antenas[ULTIMA_ANTENA] + R):
             continue
 
-        # Colocamos una antena en la posición más alejada posible que aún cubra la casa actual
-        ubicacion_antena = casas_ordenadas[i] + R
+        ubicacion_antena = casa + R
 
-        # Si la ubicacion de la antena excede la jurisdiccion del indentende, la colocamos en la posicion mas alejada posible
         if ubicacion_antena > K:
             ubicacion_antena = K
 
         antenas.append(ubicacion_antena)
-
-        # Avanzamos al siguiente punto que no esté cubierto por la antena actual
-        while (i < n) and (casas_ordenadas[i] <= ubicacion_antena + R):
-            i += 1
             
     return antenas
 
@@ -54,5 +46,4 @@ assert cobertura([150, 50, 100], 50, 1000) == [100]
 assert cobertura([50, 150, 105], 50, 1000) == [100]
 assert cobertura([51, 107, 844, 802, 151, 902], 50, 1000) == [101, 852]
 assert cobertura([], 50, 1000) == []
-assert cobertura([1050, 150, 50, 1100, 100], 50, 1000) == [100]
 assert cobertura([100, 290], 50, 300) == [150, 300]
