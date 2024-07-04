@@ -16,9 +16,8 @@ def bolsas(capacidad, productos):
         colocado = False
 
         for bolsa in bolsas:
-            peso = sum(bolsa)
             
-            if (peso + producto) <= capacidad:
+            if (sum(bolsa) + producto) <= capacidad:
                 bolsa.append(producto)
                 colocado = True
                 break
