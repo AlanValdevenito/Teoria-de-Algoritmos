@@ -5,16 +5,15 @@
 # Hacer una reconstrucción para verificar qué días debe trabajar. 
 # Indicar y justificar la complejidad del algoritmo implementado.
 
-# Ejemplo: Consideremos el arreglo [100, 20, 30, 70, 50] de ganancias. La ganancia maxima obtenible seria 180 atracando
-#          las casas [0, 2, 4].
+# Ejemplo: Consideremos el arreglo [100, 20, 30, 70, 50] de ganancias. La ganancia maxima obtenible seria 180 trabajando los dias [0, 2, 4].
 
 # OPT(0) = 0
 # OPT(1) = 100
-# OPT(2) = max{robar esta casa y no la anterior, no robar esta casa y si la anterior} = max{0+20, 100} = 100
-# OPT(3) = max{robar esta casa y no la anterior, no robar esta casa y si la anterior} = max{100+30, 100} = 130
-# OPT(4) = max{robar esta casa y no la anterior, no robar esta casa y si la anterior} = max{70+100, 130} = 170
-# OPT(5) = max{robar esta casa y no la anterior, no robar esta casa y si la anterior} = max{130+50, 170} = 180
-# OPT(6) = max{robar esta casa y no la anterior, no robar esta casa y si la anterior} = max{5+170, 180} = 180
+# OPT(2) = max{trabajar este dia y no el anterior, no trabajar este dia y si el anterior} = max{0+20, 100} = 100
+# OPT(3) = max{trabajar este dia y no el anterior, no trabajar este dia y si el anterior} = max{100+30, 100} = 130
+# OPT(4) = max{trabajar este dia y no el anterior, no trabajar este dia y si el anterior} = max{70+100, 130} = 170
+# OPT(5) = max{trabajar este dia y no el anterior, no trabajar este dia y si el anterior} = max{130+50, 170} = 180
+# OPT(6) = max{trabajar este dia y no el anterior, no trabajar este dia y si el anterior} = max{5+170, 180} = 180
 
 # Ecuacion de recurrencia: OPT(i) = max{robar esta casa y no la anterior, no robar esta casa y si la anterior} = max{OPT(i-2) + gi, OPT(i-1)} para i >=2.
 
