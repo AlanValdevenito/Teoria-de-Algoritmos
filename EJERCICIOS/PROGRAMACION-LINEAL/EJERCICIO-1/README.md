@@ -21,7 +21,7 @@ $$
 \sum_{i=1}^{n} v_i Y_i
 $$
 
-cumpliendose que
+cumpliendose la restriccion tal que
 
 $$
 \sum_{i=1}^{n} w_i Y_i \leq W 

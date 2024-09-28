@@ -11,7 +11,6 @@ no aceptará trabajar dos días seguidos.
 Objetivo: Maximizar la ganancia de los dias trabajados, sabiendo que Juan no aceptara trabajar dos dias seguidos.
 
 Variables:
-- W: Capacidad
 - $g_i$: Ganancia del dia i
 - $Y_i$: Variable booleana que indica si Juan trabaja el dia i o no
 

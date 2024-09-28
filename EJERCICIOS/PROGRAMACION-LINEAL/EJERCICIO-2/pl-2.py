@@ -1,4 +1,4 @@
-# Implementar un modelo de programación lineal que resuelva el Problema de la Mochila de valor máximo (ejercicio 7 de PD).
+# Implementar un modelo de programación lineal que resuelva el problema de Juan El Vago (ejercicio 4 de PD).
 
 from typing import List
 

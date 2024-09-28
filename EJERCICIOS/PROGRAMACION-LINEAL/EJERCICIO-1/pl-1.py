@@ -24,6 +24,8 @@ def mochila_variable(v: List[int], w: List[int], W: int):
     problem.solve()
     return list(map(lambda yi: pulp.value(yi), y))
 
+# Test 1
+
 valores = [10,1,8,100,6,11,7,2,11]
 pesos = [6,1,3,100,4,2,8,7,9]
 W = 19
