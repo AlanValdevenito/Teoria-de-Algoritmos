@@ -71,7 +71,9 @@ Debemos demostrar que Dominating Set $\leq_P$ Hitting Set.
 
 ¿Podemos resolver el problema de Dominating Set utilizando la solucion de Hitting Set?.
 
-Dicha solucion recibe un grafo y un valor $k$.
+Vamos a utilizar una caja negra que resuelve el problema de Hitting Set para resolver el problema de Dominating Set.
+
+El problema de Dominating Set recibe un grafo y un valor $k$.
 
 Transformacion del problema:
 - Un elemento $E_i$ por cada vertice $V_i$ del grafo.

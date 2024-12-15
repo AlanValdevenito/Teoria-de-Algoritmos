@@ -49,19 +49,19 @@ def dominating_set_min(grafo):
 
     return dominating_set
 
-# Justificacion
+# Complejidad
 
-# 1) Complejidad: Ordenar los vertices segun su grado de entrada cuesta O(n log(n)). Ademàs, iterar la lista de vertices cuesta O(V) y calcular
-#                 los grados de entrada cuesta O(V+E). Luego, la complejidad resulta ser O(n log(n)).
+# Ordenar los vertices segun su grado de entrada cuesta O(n log(n)). Ademàs, iterar la lista de vertices cuesta O(V) y calcular
+# los grados de entrada cuesta O(V+E). 
 
-# 2) Algoritmo Greedy: Tenemos como regla sencilla ordenar los vertices por su grado de entrada y quedarnos con los vertices cuyo grado de entrada
-#                      sea mayor debido a que cubren mas cantidad de vertices. Luego,  se aplica iterativamente esta regla para obtener el Dominating Set mínimo.
+# Luego, la complejidad resulta ser O(n log(n)).
+
+# Algoritmo Greedy
+
+# Tenemos como regla sencilla ordenar los vertices por su grado de entrada y quedarnos con los vertices cuyo grado de entrada
+# sea mayor debido a que cubren mas cantidad de vertices. Luego,  se aplica iterativamente esta regla para obtener el Dominating Set mínimo.
                       
-#                      La solucion no es siempre optima. Veamos un contrajemeplo.
-
-#                      Consideremos como ejemplo el grafo utilizado en la prueba.
-
-#                      En este ejemplo, nuestro algoritmo Greedy nos daria como solucion [6,1,5], pero la solucion optima serian [1,4].
+# La solucion no es siempre optima. Veamos un contrajemeplo. Consideremos como ejemplo el grafo utilizado en la prueba. En este ejemplo, nuestro algoritmo Greedy nos daria como solucion [6,1,5], pero la solucion optima serian [1,4].
 
 grafo1 = Grafo(False, ["1","2","3","4","5","6"])
 
