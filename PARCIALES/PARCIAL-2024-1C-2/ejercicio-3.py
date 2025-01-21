@@ -61,7 +61,7 @@ def independent_set(grafo):
 # Tenemos como regla sencilla quedarnos con el elemento que menor grado de entrada y salida tenga ya que
 # aquellos vertices con menor grado cubriran menos vertices del grafo. Luego, se aplica iterativamente esta regla  con el objetivo de 
 # maximizar la cantidad de vertices.
-# 
+ 
 # ¿La solucion es optima?. ¿Existe algun contraejemplo?. La solucion no es optima. Un contraejemplo seria un arbol completo de nivel 4.
 
 # Si consideramos un arbol completo de nivel 4, nuestro algoritmo guardara en el Independent Set el primer nodo, los nodos del nivel 1 y 
