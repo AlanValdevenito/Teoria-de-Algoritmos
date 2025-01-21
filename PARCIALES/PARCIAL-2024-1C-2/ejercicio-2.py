@@ -4,71 +4,65 @@ from collections import deque
 def copiar(grafo):
     nuevo_grafo = Grafo(grafo.dirigido)
 
-    for u in grafo.obtener_vertices():
-        for v in grafo.adyacentes(u):
-            nuevo_grafo.agregar_arista(u, v, grafo.peso_arista(u, v))
+    for v in grafo.obtener_vertices():
+        for w in grafo.adyacentes(v):
+            nuevo_grafo.agregar_arista(v, w, grafo.peso_arista(v,w))
 
     return nuevo_grafo
 
-def obtener_camino(grafo_residual, s, t):
-    padre = {s: None}
-    cola = deque([s])
+def obtener_camino(grafo, origen, destino):
+    padres = {origen: None}
+    cola = deque([origen])
 
     while cola:
-        u = cola.popleft()
+        v = cola.popleft()
 
-        for v in grafo_residual.adyacentes(u):
+        for w in grafo.adyacentes(v):
 
-            if v not in padre and grafo_residual.peso_arista(u, v) > 0:
-                padre[v] = u
+            if (w not in padres) and (grafo.peso_arista(v, w) > 0):
+                padres[w] = v
 
-                if v == t:
+                if (w == destino):
                     camino = []
 
-                    while v is not None:
-                        camino.append(v)
-                        v = padre[v]
+                    while w is not None:
+                        camino.append(w)
+                        w = padres[w]
 
                     return camino[::-1]
-                
-                cola.append(v)
-    
+
+                cola.append(w)
+
     return None
 
-def min_peso(grafo_residual, camino):
-    return min(grafo_residual.peso_arista(camino[i], camino[i+1]) for i in range(len(camino)-1))
+def actualizar_grafo_residual(grafo_residual, v, w, valor):
+    peso_anterior = grafo_residual.peso_arista(v, w)
 
-def actualizar_grafo_residual(grafo_residual, u, v, valor):
-    peso_anterior = grafo_residual.peso_arista(u, v)
-
-    if peso_anterior == valor:
-        grafo_residual.borrar_arista(u, v)
+    if valor == peso_anterior:
+        grafo_residual.borrar_arista(v, w)
     else:
-        grafo_residual.cambiar_peso(u, v, peso_anterior - valor)
+        grafo_residual.cambiar_peso(v, w, peso_anterior - valor)
 
-    if not grafo_residual.estan_unidos(v, u):
-        grafo_residual.agregar_arista(v, u, valor)
+    if not grafo_residual.estan_unidos(w, v):
+        grafo_residual.agregar_arista(w, v, valor)
     else:
-        grafo_residual.cambiar_peso(v, u, grafo_residual.peso_arista(v, u) + valor)
+        grafo_residual.cambiar_peso(w, v, grafo_residual.peso_arista(w, v) + valor)
 
 def flujo(grafo, s, t):
-    flujo = 0
+    pedidos = 0
 
     grafo_residual = copiar(grafo)
     camino = obtener_camino(grafo_residual, s, t)
 
-    # Mientras haya un camino en la red residual...
     while camino is not None:
-        # Calculamos el flujo minimo que puede fluir por el camino
-        capacidad_residual_camino = min_peso(grafo_residual, camino)
 
         for i in range(1, len(camino)):
-            actualizar_grafo_residual(grafo_residual, camino[i-1], camino[i], capacidad_residual_camino)
+            actualizar_grafo_residual(grafo_residual, camino[i-1], camino[i], 1)
 
-        flujo += capacidad_residual_camino
+        pedidos += 1
         camino = obtener_camino(grafo_residual, s, t)
 
-    return flujo
+    return pedidos
 
 def crear_red(ambulancias, pedidos, k):
     grafo = Grafo(True)
@@ -103,6 +97,4 @@ ambulancias = [(0,0), (2,2), (5,5)]
 pedidos = [(1,1), (3,3), (6,6)]
 k = 3
 
-resultado = asignar_ambulancias(ambulancias, pedidos, k)
-
-print(resultado)
+assert asignar_ambulancias(ambulancias, pedidos, k) == True
