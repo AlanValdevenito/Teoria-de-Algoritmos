@@ -46,7 +46,7 @@ def juego_dinamico(monedas, n):
             m_d = m_i + ventana
 
             # 1) Pepe elige la moneda de la izquierda (m_i) y su hermano elige la moneda de la izquierda (m_i+1)
-            opc1 = monedas[m_i] + mem[m_i+2][m_d] * (monedas[m_i+1] >= monedas[m_d] if m_i+1 <= m_d else 0)
+            opc1 = monedas[m_i] + mem[m_i+2][m_d] * (monedas[m_i+1] >= monedas[m_d] if m_i+2 <= m_d else 0)
 
             # 2) Pepe elige la moneda de la izquierda (m_i) y su hermano elige la moneda de la derecha (m_d)
             opc2 = monedas[m_i] + mem[m_i+1][m_d-1] * (monedas[m_i+1] <= monedas[m_d] if m_i+1 <= m_d-1 else 0)
