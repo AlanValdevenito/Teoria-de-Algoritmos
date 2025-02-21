@@ -26,7 +26,17 @@ def verificador(grafo, k, solucion):
     if len(solucion) < k:
         return False
 
-    # Validamos que los vertices esten unidos
+    # Validamos que los vertices que conforman la solucion no se repitan y sean un ciclo Hamiltoniano
+    visitados = set()
+
+    for v in solucion:
+        
+        if v not in grafo.obtener_vertices() or v in visitados:
+            return False
+        
+        visitados.add(v)
+
+    # Validamos que los vertices que conforman la solucion esten unidos y sean un ciclo Hamiltoniano
     for i in range(1, len(vertices)):
 
         v = vertices[i-1]
@@ -61,17 +71,17 @@ Vamos a utilizar una caja negra que resuelve el problema del problema de K-Ciclo
 
 Ciclo hamiltoniano: Camino que visita todos los vertices del grafo una unica vez, donde el primer y ultimo vertice son adyacentes.
 
-El problema de Ciclo Hamiltoniano recibe un grafo y un valor $k$.
+El problema de Ciclo Hamiltoniano recibe un grafo $G'$.
 
 Transformacion del problema: Transformamos la entrada del problema de Ciclo Hamiltoniano en una entrada del problema de K-Ciclo
-- Crear un grafo G' a partir del grafo G correspondiente al problema de Ciclo Hamiltoniano con exactamente $k$ vertices.
-- El valor de $k$ correspondiente al problema de Ciclo Hamiltoniano coincide con el valor de $k'$ correspondiente al problema de K-Ciclo.
+- El grafo $G'$ del problema de Ciclo Hamiltoniano se corresponde con el grafo $G$ del problema de K-Ciclo.
+- El valor de $K$ se corresponde con la cantidad de vertices de $G'$.
 
 Esta transformacion requiere una cantidad de pasos polinomiales.
 
 A continuacion, para demostrar que la reduccion es correcta, debemos demostrar que:
 
-Hay solucion para el problema de Ciclo Hamiltoniano de tamaño a lo sumo $k$, si y solo si, hay solucion para el problema de K-Ciclo de tamaño a lo sumo $k'$.
+Hay solucion para el problema de Ciclo Hamiltoniano, si y solo si, hay solucion para el problema de K-Ciclo de tamaño a lo sumo $k'$.
 
 Para demostrar ambas implicaciones tenemos dos opciones:
 - Metodo directo, asumiendo para cada una que la hipotesis es cierta.
@@ -79,7 +89,7 @@ Para demostrar ambas implicaciones tenemos dos opciones:
 
 ### Si hay Ciclo Hamiltoniano, entonces hay K-Ciclo
 
-Hipotesis: Hay solucion para el problema de Ciclo Hamiltoniano de tamaño a lo sumo $k$ vertices.
+Hipotesis: Hay solucion para el problema de Ciclo Hamiltoniano.
 
 Existe un camino que visita todos los $k$ vertices del grafo una unica vez, donde el primer y ultimo vertice son adyacentes.
 
@@ -89,7 +99,7 @@ Luego, existe un ciclo de exactamente $k$ vertices, con lo cual hay solucion par
 
 Hipotesis: Hay solucion para el problema de K-Ciclo de tamaño a lo sumo $k'$ vertices.
 
-Existe un camino que visita $k'$ vertices del grafo, donde el primer y ultimo vertice son adyacentes.
+Existe un camino que visita los $k'$ vertices del grafo, donde el primer y ultimo vertice son adyacentes.
 
 Luego, existe un ciclo de exactamente $k'$ vertices, con lo cual hay solucion para el problema de Ciclo-Hamiltoniano de tamaño exactamente $k$.
 
