@@ -9,8 +9,6 @@
 #                                     { 0                           si i >= j
 # Ecuacion de recurrencia: OPT(i,j) = { max{OPT(i+1,j), OPT(i,j-1)} si cadena[i] y cadena[j] no forman un par balanceado
 #                                     { 2 + OPT(i+1.j-1)            si cadena[i] y cadena[j] forman un par balanceado
-#                                     { 2 + OPT(i+2.j)              si cadena[i] y cadena[i+1] forman un par balanceado
-#                                     { 2 + OPT(i.j-2)              si cadena[j] y cadena[j-1] forman un par balanceado
 
 def largo_subsecuencia_balanceada_dinamico(cadena, n):
     mem = [[0 for _ in range(n)] for _ in range(n)]
