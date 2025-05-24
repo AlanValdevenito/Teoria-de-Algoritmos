@@ -1,12 +1,12 @@
 # Demostracion
 
-Para demostrar que es un problema NP-Completo debemos:
+Para demostrar que el problema X es un problema NP-Completo debemos:
 - Demostrar que el problema se encuentra en NP
 - Reducir el problema de Y al problema del X: Y $\leq_P$ X
 
 Nota: Para la segunda demostracion es importante demostrar que nuestra reduccion es correcta demostrando la doble implicacion.
 
-La segunda demostracion nos indica que el problema del X es al menos tan dificil de resolver como el problema de Y. Esto significa que resolver el problema de Y puede ser transformado en resolver el problema del X.
+La segunda demostracion nos indica que el problema de X es al menos tan dificil de resolver como el problema de Y. Esto significa que resolver el problema de Y puede ser transformado en resolver el problema de X.
 
 ## Demostracion I: El problema se encuentra en NP
 
@@ -33,9 +33,9 @@ Debemos demostrar que Y $\leq_P$ X.
 
 ¿Podemos resolver el problema de Y utilizando la solucion del problema X?.
 
-Vamos a utilizar una caja negra que resuelve el problema del problema X para resolver el problema de Y.
+Vamos a utilizar una caja negra que resuelve el problema de X para resolver el problema de Y.
 
-El problema de Y recibE...
+El problema de Y recibe...
 
 Transformacion del problema: Transformamos la entrada del problema de Y en una entrada del problema X
 - ...
@@ -53,11 +53,13 @@ Para demostrar ambas implicaciones tenemos dos opciones:
 ### Si hay Y, entonces hay X
 
 Hipotesis: ...
+Tesis: ...
 
 ### Si hay X, entonces hay Y
 
 Hipotesis: ...
+Tesis: ...
 
 # Conclusion
 
-Habiendo demostrado que la reduccion es correcta, queda demostrado tambien que el problema del X es un problema NP-Completo.
+Habiendo demostrado que la reduccion es correcta, queda demostrado tambien que el problema de X es un problema NP-Completo.
