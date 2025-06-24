@@ -94,3 +94,20 @@ grafo.agregar_arista(30,70)
 grafo.agregar_arista(70,50)
 
 assert dominating_set_min(grafo) == (180, [100, 30, 50])
+
+
+# Complejidad
+
+# Matriz de memorizacion: La complejidad resulta ser O(V) con V la cantidad de vertices.
+
+# Reconstruccion de la solucion: La complejidad resulta ser O(V) con V la cantidad de vertices.
+
+# Luego, la complejidad total resulta resulta ser O(V) con V la cantidad de vertices.
+
+
+# Complejidad espacial
+
+# Dado que se almacenan los resultados de la memorizacion en un arreglo la complejidad espacial resulta ser O(V) con V la cantidad de vertices.
+
+# La ecuacion de recurencia solo depende de los dos ultimos valores de la matriz de memorizacion, con lo cual podriamos reemplazar todo el arreglo
+# por solo dos variables lo cual la complejidad espacial resultaria ser O(1). Sin embargo, esto solo podria hacerse si no buscamos reconstruir la solucion.
