@@ -8,7 +8,9 @@
 
 # Indicar y justificar la complejidad espacial del algoritmo implementado, y si hay una optimización que permita consumir menos espacio.
 
-# Nota: En un grafo dirigido, un vertice v se domina a si mismo y a sus vecinos salientes (los vertices w tales que hay una arista v -> w)
+# Nota 1: Este problema es similar al problema de Juan el Vago donde nuestros dias a trabajar serian los vertices.
+
+# Nota 2: En un grafo dirigido, un vertice v se domina a si mismo y a sus vecinos salientes (los vertices w tales que hay una arista v → w)
 
 # ¿Que tipo de problema es?. Es un problema de minimizacion ya que nos piden obtener el Dominating Set de suma minima.
 
@@ -110,4 +112,4 @@ assert dominating_set_min(grafo) == (180, [100, 30, 50])
 # Dado que se almacenan los resultados de la memorizacion en un arreglo la complejidad espacial resulta ser O(V) con V la cantidad de vertices.
 
 # La ecuacion de recurencia solo depende de los dos ultimos valores de la matriz de memorizacion, con lo cual podriamos reemplazar todo el arreglo
-# por solo dos variables lo cual la complejidad espacial resultaria ser O(1). Sin embargo, esto solo podria hacerse si no buscamos reconstruir la solucion.
+# por solo dos variables con lo cual la complejidad espacial resultaria ser O(1). Sin embargo, esto solo podria hacerse si no buscamos reconstruir la solucion.
