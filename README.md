@@ -1,6 +1,6 @@
 # Teoria de Algoritmos
 
-Ejercicios y entregas de la materia Teoria de Algoritmos, catedra Buchwald-Genender, de la Facultad de Ingeniería de la Universidad de Buenos Aires (FIUBA).
+Ejercicios y entregas de la materia [Teoria de Algoritmos](https://algoritmos-rw.github.io/tda_bg/), catedra Buchwald-Genender, de la Facultad de Ingeniería de la Universidad de Buenos Aires (FIUBA).
 
 **Importante:** Este repositorio contiene soluciones hechas por mi que no fueron corregidas necesariamente por docentes de la cátedra.
 
