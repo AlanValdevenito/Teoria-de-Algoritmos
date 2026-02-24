@@ -14,3 +14,5 @@ Ejercicios y entregas de la materia [Teoria de Algoritmos](https://algoritmos-rw
 - Redes de Flujo.
 - Reduccion de problemas.
 - Clases de Complejidad.
+
+Bibliografia: [Algorithm Design](https://drive.google.com/file/d/1zYWTdMIsDmqBeuECdFZlpylZ6ZeC0Hqa/view).
