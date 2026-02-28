@@ -6,13 +6,13 @@ Ejercicios y entregas de la materia [Teoria de Algoritmos](https://algoritmos-rw
 
 ## Temas de la materia
 
-- División y Conquista avanzada.
-- Algoritmos Greedy.
-- Programación Dinámica.
-- Backtracking.
-- Programación Lineal.
-- Redes de Flujo.
-- Reduccion de problemas.
-- Clases de Complejidad.
+1. División y conquista avanzada.
+2. Algoritmos Greedy.
+3. Programación dinámica.
+4. Backtracking.
+5. Programación lineal.
+6. Redes de flujo.
+7. Reduccion de problemas.
+8. Clases de complejidad.
 
 Bibliografia: [Algorithm Design](https://drive.google.com/file/d/1zYWTdMIsDmqBeuECdFZlpylZ6ZeC0Hqa/view).
